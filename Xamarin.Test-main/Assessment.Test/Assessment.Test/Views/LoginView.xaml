@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:Assessment.Test.ViewModels"
+             x:Class="Assessment.Test.Views.LoginView"
+             x:Name="loginpage">
+    
+    
+        <StackLayout>
+            <Label Text="Log Into Your Account" FontSize="Title" TextColor="#008BFF" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="0,30,0,10"/>
+            <Grid>
+                <Grid Grid.Row="0" WidthRequest="500">
+                    <Frame HasShadow="True" BorderColor="#00C3FF" Padding="10,10,10,10" Margin="20,0" >
+                        <StackLayout Orientation="Vertical" Spacing="50">
+                            <Entry x:Name="userNameEntry" Text="{Binding UserName}" Placeholder="User Name" Margin="20,0"  TextColor="Blue" PlaceholderColor="#008BFF" ></Entry>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Label x:Name="LoginMessageLable" Text="{Binding LoginMessage, Mode=OneWay}" IsVisible="{Binding TurnLoginMessage, Mode=OneWay}" Margin="10,0,0,0" TextColor="Red"/>
+                </Grid>
+                
+                <Grid Grid.Row="1" WidthRequest="500">
+                    <Frame HasShadow="True" BorderColor="#00C3FF" Padding="8,8,8,8" Margin="20,0"  >
+                        <StackLayout Orientation="Vertical" Spacing="50">
+                            <Entry x:Name="passwordEntry" Text="{Binding Password}" Placeholder="password" Margin="20,0"  TextColor="Blue" PlaceholderColor="#008BFF" ></Entry>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="2">
+                <Button x:Name="loginButton" Text="Login" Padding="15,15,15,15" BackgroundColor="#00C3FF" Margin="25,20,25,20" FontAttributes="Bold" TextColor="#EDF4F4" Command="{Binding CmdLoging}"  />
+                </Grid>
+            </Grid>
+        </StackLayout>
+    
+</ContentPage>

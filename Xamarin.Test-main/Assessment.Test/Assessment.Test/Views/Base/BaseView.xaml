@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assessment.Test.Views.Base.BaseView" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavBarTextColour">#FFFFFF</Color>
+            <Color x:Key="NavBarColour">#000000</Color>
+            <Color x:Key="BodyHeadingColour">#696969</Color>
+            <Color x:Key="BodyLabelColour">#A0A0A0</Color>
+            <Color x:Key="BodyHighlightHeadingColour">#000000</Color>
+            <Color x:Key="SeparatorColour">#E8E8E8</Color>
+            <Color x:Key="BodyTextColour">#000000</Color>
+            <Color x:Key="AccentColor">#73e600</Color>
+
+            <Style x:Key="HeadingLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BodyHeadingColour}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            </Style>
+
+            <Style x:Key="BodyLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BodyHeadingColour}"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="PrimaryEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="{StaticResource BodyTextColour}"/>
+                <Setter Property="PlaceholderColor" Value="{StaticResource BodyLabelColour}"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+            
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            
+            <Style x:Key="SeparatorStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource SeparatorColour}"/>
+                <Setter Property="HeightRequest" Value="1"/>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+            </Style>
+
+            <Style x:Key="CheckboxStyle" TargetType="CheckBox">
+                <Setter Property="Color" Value="{StaticResource AccentColor}"/>
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            </Style>
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="buttons:SfButton">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+</ContentPage>

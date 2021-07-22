@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:Assessment.Test.ViewModels"
+             x:Class="Assessment.Test.Views.StockTransferView"
+              x:Name="pageStockTransferView">
+    <!--<ContentPage.BindingContext>
+        <viewmodels:StockTransferViewModel/>
+    </ContentPage.BindingContext>-->
+    
+        
+        <ContentPage.Resources>
+            <ResourceDictionary>
+            <Style x:Key ="infostyle" TargetType="Label">
+                
+                    <Setter Property="TextColor" Value="White"/>
+                    <Setter Property="FontSize" Value="10"/>
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+
+        <Grid BackgroundColor="White" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Text="Frome Branch" Grid.Row="0" Grid.Column="0"  Margin="20,0"/>
+                <Label Text="To Branch" Grid.Row="0" Grid.Column="1"  Margin="20,0"/>
+
+            <ScrollView Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Margin="5">
+            <CollectionView  ItemsSource="{Binding Listitems}" SelectionMode="Single" SelectedItem="{Binding StockTransferModel}" ItemsLayout="VerticalGrid, 3">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    
+                                </Grid.ColumnDefinitions>
+                            <Label Text="{Binding First_Name}" Grid.Column="0" Style="{StaticResource infostyle}" BackgroundColor="#FF827676" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.DisplyLable,Source={x:Reference pageStockTransferView}}" CommandParameter="{Binding .}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+
+                        </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+            </ScrollView>
+
+
+
+        </Grid>
+
+
+
+
+
+    
+</ContentPage>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assessment.Test.App">
+    <Application.Resources>
+        <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesome5FreeSolid">
+            <On Platform="iOS" Value="FontAwesome5FreeSolid"/>
+            <On Platform="Android" Value="fa-solid-900.ttf#Solid"/>
+            <On Platform="UWP" Value="/Assets/Fonts/fa-solid-900.ttf#"/>
+        </OnPlatform>
+
+    </Application.Resources>
+</Application>

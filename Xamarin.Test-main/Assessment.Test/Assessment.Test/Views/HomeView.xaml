@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<base:BaseView  xmlns:base="clr-namespace:Assessment.Test.Views.Base"
+                xmlns="http://xamarin.com/schemas/2014/forms" 
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                x:Name="pageHomeView"
+                x:Class="Assessment.Test.Views.HomeView">
+    <StackLayout>
+        <StackLayout.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+                <OnPlatform.Platforms>
+                    <On Platform="iOS" Value="0, 40, 0, 0" />
+                    <On Platform="Android" Value="0, 0, 0, 0" />
+                </OnPlatform.Platforms>
+            </OnPlatform>
+        </StackLayout.Margin>
+        <!-- Navigation bar -->
+        <Grid
+                ColumnDefinitions="Auto,*"
+                RowDefinitions="Auto"
+                BackgroundColor="{StaticResource NavBarColour}"
+                ColumnSpacing="15"
+                Padding="10">
+            <Label
+                    Text="X"
+                    TextColor="{StaticResource NavBarTextColour}"
+                    FontSize="Large"
+                    FontAttributes ="Bold"
+                    VerticalOptions="Center">
+            </Label>
+            <Label
+                    Grid.Column="1"
+                    Text="New Diary"
+                    TextColor="{StaticResource NavBarTextColour}"
+                    FontSize="Large"
+                    VerticalOptions="Center"/>
+        </Grid>
+        <StackLayout BackgroundColor="White" HeightRequest="50">
+            <Label Text="20041075 | TAP-NS TAP-North Strathfield" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"></Label>
+        </StackLayout>
+        <ScrollView BackgroundColor="#E1E4E6" Padding="10,20">
+
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Add to side gallery"
+                           FontSize="Medium"
+                           TextColor="Black"
+                           FontAttributes="Bold"/>
+                    <BoxView Style="{StaticResource SeparatorStyle}" Grid.Row="0" />
+                </StackLayout>
+
+                <!-- Photo section -->
+                <Frame Style="{StaticResource FrameStyle}" >
+                    <Grid  RowDefinitions="*,Auto,*,*"  BackgroundColor="Transparent">
+                        <Label Grid.Row="0" Text="Add photos to side library" Style="{StaticResource HeadingLabelStyle}" />
+                        <BoxView Style="{StaticResource SeparatorStyle}" Grid.Row="0" />
+                        <StackLayout Grid.Row="1" HeightRequest="70" >
+                            <CollectionView ItemsSource="{Binding ImageList}"  >
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Horizontal" HorizontalItemSpacing="10"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid  VerticalOptions="Start"  HorizontalOptions="Start" HeightRequest="60" Padding="10">
+                                            <Image Source="{Binding ImageSource}" Aspect="AspectFit" HeightRequest="50" WidthRequest="50"/>
+                                            <Label Text="X" VerticalOptions="Start" HorizontalOptions="End" Margin="0,0,-5,-5">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding BindingContext.RemovePhotoCommand,Source={x:Reference pageHomeView}}" CommandParameter="{Binding .}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                        <buttons:SfButton Grid.Row="2" Text="Add a photo" Command="{Binding AddPhotoCommand}" Style="{StaticResource PrimaryButtonStyle}"/>
+                        <Label Grid.Row="3" Text="Includes in photo gallery" VerticalOptions="CenterAndExpand"/>
+                        <CheckBox  Grid.Row="3" Style="{StaticResource CheckboxStyle}"  IsChecked="{Binding IncludeInGallery}" />
+                    </Grid>
+                </Frame>
+                <!-- Comments section -->
+                <Frame Style="{StaticResource FrameStyle}" >
+                    <Grid  RowDefinitions="*,*"  BackgroundColor="Transparent">
+                        <Label Grid.Row="0" Text="Comments" Style="{StaticResource HeadingLabelStyle}"/>
+                        <BoxView  Style="{StaticResource SeparatorStyle}" Grid.Row="0" />
+                        <Entry  Style ="{StaticResource PrimaryEntryStyle}" Text="{Binding Comments}"  Placeholder="Comments" Grid.Row="1"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Details section -->
+                <Frame Style="{StaticResource FrameStyle}" >
+                    <Grid  RowDefinitions="*,*,*,*"  BackgroundColor="Transparent">
+                        <BoxView Style="{StaticResource SeparatorStyle}" Grid.Row="0" />
+                        <Label Grid.Row="0" Text="Details" Style="{StaticResource HeadingLabelStyle}"/>
+                        <DatePicker Grid.Row="1"  Date="{Binding Date}" />
+                        <Picker Grid.Row="2" Title="Select Area" ItemsSource="{Binding AreaList}" SelectedItem="{Binding Area}"/>
+                        <Picker Grid.Row="3"  Title="Task Category" ItemsSource="{Binding TaskCategoryList}"  SelectedItem="{Binding Taskcategory}"/>
+                        <Entry Grid.Row="4"  Placeholder="Tags" Text="{Binding Tags}"/>
+                    </Grid>
+                </Frame>
+
+                <!-- Event section -->
+                <Frame Style="{StaticResource FrameStyle}" >
+                    <Grid  RowDefinitions="*,*"  BackgroundColor="Transparent">
+                        <CheckBox  Grid.Row="0" Style="{StaticResource CheckboxStyle}" IsChecked="{Binding LinkToExistingEvent}"/>
+                        <Label Grid.Row="0" Text="Link to existing event?" Style="{StaticResource HeadingLabelStyle}" />
+                        <BoxView Style="{StaticResource SeparatorStyle}" Grid.Row="0" />
+                        <Picker Grid.Row="1" Title="Select an event" ItemsSource="{Binding EventList}"  SelectedItem="{Binding Event}"/> 
+                    </Grid>
+                </Frame>
+                <buttons:SfButton Text="Next" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding NextCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</base:BaseView>
